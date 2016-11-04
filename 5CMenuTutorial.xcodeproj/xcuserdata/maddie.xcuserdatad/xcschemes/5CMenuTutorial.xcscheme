@@ -5,6 +5,22 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "095AE7931DCC5E9F003C0DEE"
+               BuildableName = "5CMenuTutorial.app"
+               BlueprintName = "5CMenuTutorial"
+               ReferencedContainer = "container:5CMenuTutorial.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -12,7 +28,36 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "095AE7A71DCC5E9F003C0DEE"
+               BuildableName = "5CMenuTutorialTests.xctest"
+               BlueprintName = "5CMenuTutorialTests"
+               ReferencedContainer = "container:5CMenuTutorial.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "095AE7B21DCC5E9F003C0DEE"
+               BuildableName = "5CMenuTutorialUITests.xctest"
+               BlueprintName = "5CMenuTutorialUITests"
+               ReferencedContainer = "container:5CMenuTutorial.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "095AE7931DCC5E9F003C0DEE"
+            BuildableName = "5CMenuTutorial.app"
+            BlueprintName = "5CMenuTutorial"
+            ReferencedContainer = "container:5CMenuTutorial.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -26,6 +71,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "095AE7931DCC5E9F003C0DEE"
+            BuildableName = "5CMenuTutorial.app"
+            BlueprintName = "5CMenuTutorial"
+            ReferencedContainer = "container:5CMenuTutorial.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -35,6 +90,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "095AE7931DCC5E9F003C0DEE"
+            BuildableName = "5CMenuTutorial.app"
+            BlueprintName = "5CMenuTutorial"
+            ReferencedContainer = "container:5CMenuTutorial.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
