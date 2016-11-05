@@ -67,6 +67,11 @@ To add the SwiftyJSON library we need to add the following to our Podfile. Repla
   end
 ```
 
+Finally, be sure you are still in your app project folder and run
+```
+$ pod install
+```
+
 ##Continuing to build our app!
 
 ###Configuring our Storyboard

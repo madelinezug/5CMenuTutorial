@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class MenuViewController: UITableViewController {
+    
+    var menuItems: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //Read in data from the ASPC Menu API
         
-        var menuItems : [String] = []
+        menuItems = []
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +34,7 @@ class MenuViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return menuItems.count
     }
 
     /*
