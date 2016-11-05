@@ -7,7 +7,7 @@ Welcome to hackweek! In this workshop we'll be making a 5C menu app.
 
 We'll walk you through how to make the app step-by-step but this doc has some of the steps written out for reference.
 
-###Getting Started
+##Getting Started
 
 Open XCode and create a new Single View application.
 
@@ -20,7 +20,7 @@ and we'll parse it with help from [SwiftyJSON](https://github.com/SwiftyJSON/Swi
 
 [More instructions on how this works here](https://devdactic.com/parse-json-with-swift/)
 
-###Installing Cocoapods
+##Installing Cocoapods
 
 Before we continue let's install [cocoapods.] (https://cocoapods.org)
 
@@ -68,9 +68,9 @@ To add the SwiftyJSON library we need to add the following to our Podfile. Repla
   end
 ```
 
-###Continuing to build our app!
+##Continuing to build our app!
 
-##Configuring our Storyboard
+###Configuring our Storyboard
 
 Back to our storyboard. We want to use a specific subclass of ViewController called TableViewController so we can display a table of the 7 dining hall options. 
 
@@ -88,7 +88,7 @@ Add a second TableViewController.
 
 Connect the two with a segue from the tableViewCell of the first TableViewController to the second TableViewController.
 
-##Adding files
+###Adding files
 
 Add corresponding files
 
