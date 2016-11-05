@@ -11,8 +11,7 @@ We'll walk you through how to make the app step-by-step but this doc has some of
 
 Open XCode and create a new Single View application.
 
-	-We'll be working with Storyboards to build our app. Select your Main.storyboard file in the lefthand menu and you'll see our main ViewController!
-
+We'll be working with Storyboards to build our app. Select your Main.storyboard file in the lefthand menu and you'll see our main ViewController!
 
 We'll be getting dining hall menu data from the [ASPC Menu API](https://aspc.pomona.edu/api/)
 
@@ -90,6 +89,8 @@ Connect the two with a segue from the tableViewCell of the first TableViewContro
 
 ###Adding files & code
 
+More detailed instructions with pictures for a similar app structure are available [here] (https://www.ralfebert.de/tutorials/ios-swift-uitableviewcontroller/)
+
 We need a file for each of the TableViewControllers we added to the storyboard. This is where we will further specify how our app should look and behave.
 
 Add a new file by selecting File->New->CocoaTouch Class and filling in UITableViewController for the subclass and ViewController for the main class.
@@ -107,6 +108,48 @@ Take a look at these two methods in the code and see if you can figure out what 
         return 0
     }
 ``` 
+
+We'll need an array to store the name of each of our dining halls:
+
+```Swift
+var diningHalls: [String] = ["Frank", "Frary", "Collins", "Scripps", "Mudd", "Pitzer", "Oldenborg"]
+```
+
+##Linking Files to Storyboard
+
+We need to make sure our storyboard knows what code to use for each controller. Go to your storyboard. In the righthand menu click on the third icon from the left and set the appropriate class for each controller.
+
+##Configuring the TableViewCells
+
+Let's go back to our storyboard and set the class of our prototype cells to "Basic" for each of our TableViewControllers. A prototype cell tells your TableViewController what cells in its table should look like. 
+
+Your app will reuse this prototype to make each item in the table. In order for the app to know what to reuse we need to give our cell a "Reuse Identifier". This is how we will reference our prototype cell. 
+
+To change the Reuse Identifier select the cell and choose the fourth icon from the right in the top right menu. In the identifier field enter your identifier. I chose "diningHallCell" and "menuItemCell" for my two prototype cells.
+
+##Making the cells display data
+
+Now that we've set up our cells and can reference them we want them to actually display something! We'll do that in our TableViewController code.
+
+We'll need to tell our app how to use our prototype cells. Here's what my code looks like, we'll walk through this together.
+
+```Swift
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("diningHallCell", forIndexPath: indexPath)
+
+         cell.textLabel?.text = diningHalls[indexPath.row] //display each dining hall on a different row
+
+        return cell
+    }
+```
+
+##Running our app
+
+Now that we have some data displayed let's see what our app looks like! To run your app on a simulated device press the play button on the upper left corner of the screen.
+
+
+
+
 
 
 
