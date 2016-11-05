@@ -88,9 +88,28 @@ Add a second TableViewController.
 
 Connect the two with a segue from the tableViewCell of the first TableViewController to the second TableViewController.
 
-###Adding files
+###Adding files & code
 
-Add corresponding files
+We need a file for each of the TableViewControllers we added to the storyboard. This is where we will further specify how our app should look and behave.
+
+Add a new file by selecting File->New->CocoaTouch Class and filling in UITableViewController for the subclass and ViewController for the main class.
+
+Wow! Look at all that code you get for free!
+
+Take a look at these two methods in the code and see if you can figure out what values to return:
+
+```Swift
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 0
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+``` 
+
+
+
 
 
 
