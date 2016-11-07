@@ -12,9 +12,13 @@ import Alamofire
 
 class MenuViewController: UITableViewController {
     
+    struct Meal {
+        var name: String
+        var foodItems: [String]
+    }
+    
     var selectedDiningHall: String? //This value is an optional: its value can be nil at any time
-    var numberOfMeals: Int?
-    var mealsDict = [String:[String]]()
+    var mealsArray = [Meal]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,12 +79,12 @@ class MenuViewController: UITableViewController {
         Alamofire.request(.GET, "https://aspc.pomona.edu/api/menu/dining_hall/"+apiDiningHall+"/day/"+apiDay+"?auth_token=8227601fb7f5768fb6ccf9f5ab38c4700b884ea0").responseJSON { (responseData) -> Void in
             if((responseData.result.value) != nil) {
                 let json = JSON(responseData.result.value!)
-                self.numberOfMeals = json.count
                 
                 for menu in json{
                     let meal = menu.1["meal"].stringValue
                     let foodItems = menu.1["food_items"].arrayObject as! [String]
-                    self.mealsDict[meal] = foodItems
+                    let newMeal = Meal(name:meal, foodItems:foodItems)
+                    self.mealsArray.append(newMeal)
                 }
                 
                 //Update our table to show our menu data!
@@ -100,26 +104,22 @@ class MenuViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return menuItems.count
+
+        return mealsArray[section].foodItems.count
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let numberOfMeals = numberOfMeals{
-            return numberOfMeals
-        }else{
-            return 1
-        }
+        return mealsArray.count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "food"
+        return mealsArray[section].name
     }
-    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("menuItemCell", forIndexPath: indexPath)
         
-        cell.textLabel?.text = menuItems[indexPath.row]
+        cell.textLabel?.text = mealsArray[indexPath.section].foodItems[indexPath.row]
         return cell
     }
     
