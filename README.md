@@ -201,6 +201,22 @@ Awesome job so far!
 
 ##Getting the Menu Data
 
+Here is how we will use Alamofire to make our API call:
+
+```Swift
+//Read in data from the ASPC Menu API
+        Alamofire.request(.GET, "https://aspc.pomona.edu/api/menu/dining_hall/"+apiDiningHall+"/day/"+apiDay+"?auth_token=8227601fb7f5768fb6ccf9f5ab38c4700b884ea0").responseJSON { (responseData) -> Void in
+            if((responseData.result.value) != nil) {
+                let json = JSON(responseData.result.value!)
+                let foodItems = json[0]["food_items"]
+                self.menuItems = foodItems.arrayObject as! [String]
+                
+                //Update our table to show our menu data!
+                self.tableView.reloadData()
+                
+            }
+        }
+```
 
 
 
