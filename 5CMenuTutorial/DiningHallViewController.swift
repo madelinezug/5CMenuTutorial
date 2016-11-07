@@ -11,6 +11,7 @@ import UIKit
 class DiningHallViewController: UITableViewController {
     
     var diningHalls: [String] = ["Frank", "Frary", "Collins", "Scripps", "Mudd", "Pitzer", "Oldenborg"]
+    var selectedDiningHall:String = "";
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,20 +38,30 @@ class DiningHallViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("diningHallCell", forIndexPath: indexPath)
 
          cell.textLabel?.text = diningHalls[indexPath.row] //display each dining hall on a different row
-
+        print(cell.textLabel?.text)
         return cell
     }
- 
- 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedDiningHall = diningHalls[indexPath.row]
     }
-    */
+ 
+     //MARK: - Navigation
+
+     //In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+         //Get the new view controller using segue.destinationViewController.
+         //Pass the selected object to the new view controller.
+        print(segue.identifier)
+        print(segue.destinationViewController)
+        if(segue.identifier == "showMenu"){
+            if let destination = segue.destinationViewController as? MenuViewController {
+                destination.selectedDiningHall = self.selectedDiningHall
+                print(self.selectedDiningHall)
+            }
+            
+        }
+    }
+ 
 
 }

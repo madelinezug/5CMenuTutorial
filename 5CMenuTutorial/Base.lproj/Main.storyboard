@@ -31,7 +31,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="nim-8w-JLl" kind="show" id="poK-ei-iyM"/>
+                                    <segue destination="nim-8w-JLl" kind="show" identifier="showMenu" id="poK-ei-iyM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -46,10 +46,10 @@
             </objects>
             <point key="canvasLocation" x="1055" y="357"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="ZiQ-A1-qmX">
             <objects>
-                <tableViewController id="nim-8w-JLl" sceneMemberID="viewController">
+                <tableViewController id="nim-8w-JLl" customClass="MenuViewController" customModule="_CMenuTutorial" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mi0-WS-VEu">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

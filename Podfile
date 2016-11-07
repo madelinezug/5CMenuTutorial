@@ -6,7 +6,8 @@ target '5CMenuTutorial' do
   use_frameworks!
 
   # Pods for 5CMenuTutorial
-	pod 'SwiftyJSON'
+  pod 'SwiftyJSON', '~> 2.3.3'
+  pod 'Alamofire', '~> 3.0'
 
   target '5CMenuTutorialTests' do
     inherit! :search_paths

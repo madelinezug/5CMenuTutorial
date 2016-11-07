@@ -72,6 +72,8 @@ Finally, be sure you are still in your app project folder and run
 $ pod install
 ```
 
+We'll have to close XCode and be sure to open the .xcworkspace version of our project now that we have pods installed.
+
 ##Continuing to build our app!
 
 ###Configuring our Storyboard
@@ -114,11 +116,13 @@ Take a look at these two methods in the code and see if you can figure out what 
     }
 ``` 
 
-We'll need an array to store the name of each of our dining halls:
+We'll need an array to store the name of each of our dining halls, and a String to store the dining hall we select.
 
 ```Swift
 var diningHalls: [String] = ["Frank", "Frary", "Collins", "Scripps", "Mudd", "Pitzer", "Oldenborg"]
+var selectedDiningHall:String = "";
 ```
+
 
 ##Linking Files to Storyboard
 
@@ -146,6 +150,41 @@ We'll need to tell our app how to use our prototype cells. Here's what my code l
 
         return cell
     }
+```
+
+We also need to handle selection:
+
+```Swift
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedDiningHall = diningHalls[indexPath.row]
+    }
+```
+
+Finally, we'll need to pass the selected dining hall to the next screen:
+```Swift
+     //MARK: - Navigation
+
+     //In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+         //Get the new view controller using segue.destinationViewController.
+         //Pass the selected object to the new view controller.
+        
+        if(segue.identifier == "showMenu"){
+            if let destination = segue.destinationViewController as? MenuViewController {
+                destination.selectedDiningHall = self.selectedDiningHall
+            }
+            
+        }
+    }
+```
+
+This requires a selectedDiningHall variable in MenuViewController as well:
+
+```Swift
+class MenuViewController: UITableViewController {
+    
+    var menuItems: [String] = []
+    var selectedDiningHall: String = ""
 ```
 
 ##Running our app

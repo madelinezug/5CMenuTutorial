@@ -8,17 +8,33 @@
 
 import UIKit
 import SwiftyJSON
+import Alamofire
 
 class MenuViewController: UITableViewController {
     
     var menuItems: [String] = []
+    var selectedDiningHall: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("View loaded")
 
         //Read in data from the ASPC Menu API
+        Alamofire.request(.GET, "https://aspc.pomona.edu/api/menu/dining_hall/cmc/day/sun?auth_token=8227601fb7f5768fb6ccf9f5ab38c4700b884ea0").responseJSON { (responseData) -> Void in
+            if((responseData.result.value) != nil) {
+                let json = JSON(responseData.result.value!)
+                let foodItems = json[0]["food_items"]
+                print(foodItems)
+                
+                
+            }else{
+                print("response empty")
+            }
+        }
         
         menuItems = []
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,15 +53,16 @@ class MenuViewController: UITableViewController {
         return menuItems.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("menuItemCell", forIndexPath: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = menuItems[indexPath.row]
+        
 
         return cell
     }
-    */
+    
 
     
     /*
