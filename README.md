@@ -108,11 +108,11 @@ I named my files DiningHallViewController and MenuViewController.
 
 Wow! Look at all that code you get for free!
 
-##Linking Files to Storyboard
+###Linking Files to Storyboard
 
 We need to make sure our storyboard knows what code to use for each controller. Go to your storyboard. In the righthand menu click on the third icon from the left and set the appropriate class for each controller.
 
-##Configuring the TableViewCells
+###Configuring the TableViewCells
 
 Let's stay in our storyboard and set the class of our prototype cells to "Basic" for each of our TableViewControllers. A prototype cell tells your TableViewController what all cells in its table should look like. 
 
@@ -120,7 +120,7 @@ Your app will reuse this prototype to make each item in the table. In order for 
 
 To change the Reuse Identifier select the cell and choose the fourth icon from the right in the top right menu. In the identifier field enter your identifier. I chose "diningHallCell" and "menuItemCell" for my two prototype cells.
 
-##Back to the code
+###Back to the code
 
 Now that our storyboard is linked to our code we need to actually write the code to make things happen!
 
@@ -143,7 +143,7 @@ var diningHalls: [String] = ["Frank", "Frary", "Collins", "Scripps", "Mudd", "Pi
 var selectedDiningHall:String = "";
 ```
 
-##Making the cells display data
+###Making the cells display data
 
 We've set up our cells and can reference them with their Reuse Identifier, so now we want them to actually display something! We'll do that in our DiningHallViewController code.
 
@@ -201,6 +201,8 @@ Now that we have some data displayed let's see what our app looks like! To run y
 Awesome job so far!
 
 ##Getting the Menu Data
+
+
 
 
 

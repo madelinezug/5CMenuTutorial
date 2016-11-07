@@ -17,9 +17,56 @@ class MenuViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var apiDiningHall = ""
+        
+        //The ASPC Menu API needs the name of the dining hall to be formatted in a specific way when we make our API call.
+        //here we swap out our dining hall name for the name that the ASPC API prefers.
+        switch selectedDiningHall{
+        case "Frary":
+            apiDiningHall = "frary"
+        case "Frank":
+            apiDiningHall = "frank"
+        case "Collins":
+            apiDiningHall = "cmc"
+        case "Scripps":
+            apiDiningHall = "scripps"
+        case "Mudd":
+            apiDiningHall = "mudd"
+        case "Oldenborg":
+            apiDiningHall = "oldenborg"
+        case "Pitzer":
+            apiDiningHall = "pitzer"
+        default:
+            apiDiningHall = ""
+        }
+        
+        // returns an integer from 1 - 7, with 1 being Sunday and 7 being Saturday
+        let dayAsInt = NSDate().dayOfWeek()!
+        var apiDay = ""
+        
+        //Format the day of the week so the ASPC API will be happy
+        switch  dayAsInt{
+        case 1:
+            apiDay = "sun"
+        case 2:
+            apiDay = "mon"
+        case 3:
+            apiDay = "tue"
+        case 4:
+            apiDay = "wed"
+        case 5:
+            apiDay = "thu"
+        case 6:
+            apiDay = "fri"
+        case 7:
+            apiDay = "sat"
+        default:
+            apiDay = ""
+        }
 
         //Read in data from the ASPC Menu API
-        Alamofire.request(.GET, "https://aspc.pomona.edu/api/menu/dining_hall/cmc/day/sun?auth_token=8227601fb7f5768fb6ccf9f5ab38c4700b884ea0").responseJSON { (responseData) -> Void in
+        Alamofire.request(.GET, "https://aspc.pomona.edu/api/menu/dining_hall/"+apiDiningHall+"/day/"+apiDay+"?auth_token=8227601fb7f5768fb6ccf9f5ab38c4700b884ea0").responseJSON { (responseData) -> Void in
             if((responseData.result.value) != nil) {
                 let json = JSON(responseData.result.value!)
                 let foodItems = json[0]["food_items"]
@@ -55,20 +102,20 @@ class MenuViewController: UITableViewController {
 
         cell.textLabel?.text = menuItems[indexPath.row]
         
-
         return cell
     }
     
 
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+//Gets us the current day of the week
+extension NSDate {
+    func dayOfWeek() -> Int? {
+        guard
+            let cal: NSCalendar = NSCalendar.currentCalendar(),
+            let comp: NSDateComponents = cal.components(.Weekday, fromDate: self) else { return nil }
+        return comp.weekday
+    }
+}
+
+
