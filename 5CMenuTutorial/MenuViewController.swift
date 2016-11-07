@@ -14,7 +14,9 @@ class MenuViewController: UITableViewController {
     
     var menuItems: [String] = []
     var selectedDiningHall: String? //This value is an optional: its value can be nil at any time
-
+    var numberOfMeals: Int?
+    var mealsDict = [String:[String]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,9 +24,9 @@ class MenuViewController: UITableViewController {
         
         //Here we unwrap our optional to make sure it isn't nil
         if let selectedDiningHall = selectedDiningHall{
-        
-        //The ASPC Menu API needs the name of the dining hall to be formatted in a specific way when we make our API call.
-        //here we swap out our dining hall name for the name that the ASPC API prefers.
+            
+            //The ASPC Menu API needs the name of the dining hall to be formatted in a specific way when we make our API call. We can find this format in their documentation on their website.
+            //Here we swap out our dining hall name for the name that the ASPC API prefers.
             switch selectedDiningHall{
             case "Frary":
                 apiDiningHall = "frary"
@@ -69,13 +71,19 @@ class MenuViewController: UITableViewController {
         default:
             apiDay = ""
         }
-
+        
         //Read in data from the ASPC Menu API
         Alamofire.request(.GET, "https://aspc.pomona.edu/api/menu/dining_hall/"+apiDiningHall+"/day/"+apiDay+"?auth_token=8227601fb7f5768fb6ccf9f5ab38c4700b884ea0").responseJSON { (responseData) -> Void in
             if((responseData.result.value) != nil) {
                 let json = JSON(responseData.result.value!)
-                let foodItems = json[0]["food_items"]
-                self.menuItems = foodItems.arrayObject as! [String]
+                self.numberOfMeals = json.count
+                
+                for menu in json{
+                    let meal = menu.1["meal"].stringValue
+                    let foodItems = menu.1["food_items"].arrayObject as! [String]
+                    mealsDict[meal] = foodItems
+                }
+                //self.menuItems = foodItems.arrayObject as! [String]
                 
                 //Update our table to show our menu data!
                 self.tableView.reloadData()
@@ -84,33 +92,40 @@ class MenuViewController: UITableViewController {
         }
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return menuItems.count
     }
-
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if let numberOfMeals = numberOfMeals{
+            return numberOfMeals
+        }else{
+            return 1
+        }
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "food"
+    }
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("menuItemCell", forIndexPath: indexPath)
-
-        cell.textLabel?.text = menuItems[indexPath.row]
         
+        cell.textLabel?.text = menuItems[indexPath.row]
         return cell
     }
     
-
+    
 }
 
 //Gets us the current day of the week
