@@ -12,7 +12,6 @@ import Alamofire
 
 class MenuViewController: UITableViewController {
     
-    var menuItems: [String] = []
     var selectedDiningHall: String? //This value is an optional: its value can be nil at any time
     var numberOfMeals: Int?
     var mealsDict = [String:[String]]()
@@ -81,9 +80,8 @@ class MenuViewController: UITableViewController {
                 for menu in json{
                     let meal = menu.1["meal"].stringValue
                     let foodItems = menu.1["food_items"].arrayObject as! [String]
-                    mealsDict[meal] = foodItems
+                    self.mealsDict[meal] = foodItems
                 }
-                //self.menuItems = foodItems.arrayObject as! [String]
                 
                 //Update our table to show our menu data!
                 self.tableView.reloadData()
