@@ -13,32 +13,37 @@ import Alamofire
 class MenuViewController: UITableViewController {
     
     var menuItems: [String] = []
-    var selectedDiningHall: String = ""
+    var selectedDiningHall: String? //This value is an optional: its value can be nil at any time
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         var apiDiningHall = ""
         
+        //Here we unwrap our optional to make sure it isn't nil
+        if let selectedDiningHall = selectedDiningHall{
+        
         //The ASPC Menu API needs the name of the dining hall to be formatted in a specific way when we make our API call.
         //here we swap out our dining hall name for the name that the ASPC API prefers.
-        switch selectedDiningHall{
-        case "Frary":
-            apiDiningHall = "frary"
-        case "Frank":
-            apiDiningHall = "frank"
-        case "Collins":
-            apiDiningHall = "cmc"
-        case "Scripps":
-            apiDiningHall = "scripps"
-        case "Mudd":
-            apiDiningHall = "mudd"
-        case "Oldenborg":
-            apiDiningHall = "oldenborg"
-        case "Pitzer":
-            apiDiningHall = "pitzer"
-        default:
-            apiDiningHall = ""
+            switch selectedDiningHall{
+            case "Frary":
+                apiDiningHall = "frary"
+            case "Frank":
+                apiDiningHall = "frank"
+            case "Collins":
+                apiDiningHall = "cmc"
+            case "Scripps":
+                apiDiningHall = "scripps"
+            case "Mudd":
+                apiDiningHall = "mudd"
+            case "Oldenborg":
+                apiDiningHall = "oldenborg"
+            case "Pitzer":
+                apiDiningHall = "pitzer"
+            default:
+                apiDiningHall = ""
+            }
+            
         }
         
         // returns an integer from 1 - 7, with 1 being Sunday and 7 being Saturday

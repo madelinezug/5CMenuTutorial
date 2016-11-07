@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Dining Hall View Controller-->
+        <!--Dining Halls-->
         <scene sceneID="qTO-ZH-ruA">
             <objects>
                 <tableViewController id="lUu-h3-iX3" customClass="DiningHallViewController" customModule="_CMenuTutorial" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,9 +30,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="nim-8w-JLl" kind="show" identifier="showMenu" id="poK-ei-iyM"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -40,8 +37,11 @@
                             <outlet property="delegate" destination="lUu-h3-iX3" id="661-4d-hiO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="5Aq-29-vg8"/>
+                    <navigationItem key="navigationItem" title="Dining Halls" id="5Aq-29-vg8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="nim-8w-JLl" kind="show" identifier="showMenu" id="fyL-bl-3lU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qdR-RK-zJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,7 +82,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hZ2-yq-VeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1318.5" y="356.5"/>
+            <point key="canvasLocation" x="1394" y="357"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a3L-bw-tqT">

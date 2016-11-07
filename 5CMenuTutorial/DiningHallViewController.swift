@@ -44,6 +44,7 @@ class DiningHallViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedDiningHall = diningHalls[indexPath.row]
+        performSegueWithIdentifier("showMenu", sender: self)
     }
  
      //MARK: - Navigation
@@ -52,12 +53,10 @@ class DiningHallViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
          //Get the new view controller using segue.destinationViewController.
          //Pass the selected object to the new view controller.
-        print(segue.identifier)
-        print(segue.destinationViewController)
+
         if(segue.identifier == "showMenu"){
             if let destination = segue.destinationViewController as? MenuViewController {
                 destination.selectedDiningHall = self.selectedDiningHall
-                print(self.selectedDiningHall)
             }
             
         }

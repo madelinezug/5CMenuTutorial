@@ -94,7 +94,7 @@ Now we have a navigation controller and a TableViewController.
 
 Add a second TableViewController.
 
-Connect the two with a segue from the tableViewCell of the first TableViewController to the second TableViewController. 
+Connect the two with a segue from the first TableViewController to the second TableViewController. 
 
 ###Adding files & code
 
@@ -164,18 +164,17 @@ We also need to tell our app what to do when a dining hall is selected:
 ```Swift
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedDiningHall = diningHalls[indexPath.row]
+        performSegueWithIdentifier("showMenu", sender: self)
     }
 ```
 
 Finally, we'll need to pass the selected dining hall to the next screen:
 ```Swift
-     //MARK: - Navigation
-
-     //In a storyboard-based application, you will often want to do a little preparation before navigation
+//In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
          //Get the new view controller using segue.destinationViewController.
          //Pass the selected object to the new view controller.
-        
+
         if(segue.identifier == "showMenu"){
             if let destination = segue.destinationViewController as? MenuViewController {
                 destination.selectedDiningHall = self.selectedDiningHall
