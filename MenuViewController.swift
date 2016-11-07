@@ -17,23 +17,19 @@ class MenuViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("View loaded")
 
         //Read in data from the ASPC Menu API
         Alamofire.request(.GET, "https://aspc.pomona.edu/api/menu/dining_hall/cmc/day/sun?auth_token=8227601fb7f5768fb6ccf9f5ab38c4700b884ea0").responseJSON { (responseData) -> Void in
             if((responseData.result.value) != nil) {
                 let json = JSON(responseData.result.value!)
                 let foodItems = json[0]["food_items"]
-                print(foodItems)
+                self.menuItems = foodItems.arrayObject as! [String]
                 
+                //Update our table to show our menu data!
+                self.tableView.reloadData()
                 
-            }else{
-                print("response empty")
             }
         }
-        
-        menuItems = []
-        
         
     }
 

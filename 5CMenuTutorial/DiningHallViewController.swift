@@ -37,8 +37,8 @@ class DiningHallViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("diningHallCell", forIndexPath: indexPath)
 
-         cell.textLabel?.text = diningHalls[indexPath.row] //display each dining hall on a different row
-        print(cell.textLabel?.text)
+        cell.textLabel?.text = diningHalls[indexPath.row] //display each dining hall on a different row
+        
         return cell
     }
     

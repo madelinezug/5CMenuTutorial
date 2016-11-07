@@ -13,15 +13,15 @@ Open XCode and create a new Single View application.
 
 We'll be working with Storyboards to build our app. Select your Main.storyboard file in the lefthand menu and you'll see our main ViewController!
 
-We'll be getting dining hall menu data from the [ASPC Menu API](https://aspc.pomona.edu/api/)
+We'll be getting dining hall menu data from the [ASPC Menu API](https://aspc.pomona.edu/api/).
 
-and we'll parse it with help from [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON). This is a library.
+We will make the request with help from [Alamofire](https://github.com/Alamofire/Alamofire) and we'll parse the response with help from [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON). These are both libraries.
 
 [More instructions on how this works here](https://devdactic.com/parse-json-with-swift/)
 
 ##Installing Cocoapods
 
-Before we continue let's install [cocoapods.] (https://cocoapods.org)
+Before we continue let's install [cocoapods.] (https://cocoapods.org) This will let us use libraries in our project!
 
 Open terminal and run:
 
@@ -45,7 +45,7 @@ $ pod setup --verbose
 
 You should get a bunch of output that ends in Setup completed. We'll help you troubleshoot if things get crazy.
 
-Next we want to create a Podfile for our project. A Podfile tells our app what libraries we have added so we can use them in our code. In our case we'll be adding the SwiftyJSON library to help us organize and use the data we get from ASPC's menu API. Libraries save us time by letting us use other people's open source code. 
+Next we want to create a Podfile for our project. A Podfile tells our app what libraries we have added so we can use them in our code. In our case we'll be adding the SwiftyJSON and Alamofire libraries to help us request and use the data we get from ASPC's menu API. Libraries save us time by letting us use other people's open source code. 
 
 We want to make our Podfile in the same folder as our app so navigate to that folder in Terminal. Once you're there run:
 
@@ -59,11 +59,12 @@ This creates the Podfile. To open it in XCode run:
 $ open -a Xcode Podfile
 ```
 
-To add the SwiftyJSON library we need to add the following to our Podfile. Replace "5CMenuTutorial" with the name of your app.
+To add the SwiftyJSON and Alamofire libraries we need to add the following to our Podfile. Replace "5CMenuTutorial" with the name of your app.
 
 ```
   target '5CMenuTutorial' do
-    pod 'SwiftyJSON'
+    pod 'SwiftyJSON', '~> 2.3.3'
+    pod 'Alamofire', '~> 3.0'
   end
 ```
 
@@ -71,6 +72,7 @@ Finally, be sure you are still in your app project folder and run
 ```
 $ pod install
 ```
+You need to run this every time you update your podfile.
 
 We'll have to close XCode and be sure to open the .xcworkspace version of our project now that we have pods installed.
 
@@ -190,6 +192,8 @@ class MenuViewController: UITableViewController {
 ##Running our app
 
 Now that we have some data displayed let's see what our app looks like! To run your app on a simulated device press the play button on the upper left corner of the screen.
+
+##Getting the Menu Data
 
 
 
