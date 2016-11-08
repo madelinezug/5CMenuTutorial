@@ -15,6 +15,8 @@ We'll be working with Storyboards to build our app. Select your Main.storyboard 
 
 We'll be getting dining hall menu data from the [ASPC Menu API](https://aspc.pomona.edu/api/).
 
+Token if you need one: 8227601fb7f5768fb6ccf9f5ab38c4700b884ea0
+
 We will make the request with help from [Alamofire](https://github.com/Alamofire/Alamofire) and we'll parse the response with help from [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON). These are both libraries.
 
 [More instructions on how this works here](https://devdactic.com/parse-json-with-swift/)
