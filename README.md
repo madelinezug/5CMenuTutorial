@@ -148,7 +148,7 @@ We'll need an array to store the name of each of our dining halls, and a String 
 
 ```Swift
 var diningHalls: [String] = ["Frank", "Frary", "Collins", "Scripps", "Mudd", "Pitzer", "Oldenborg"]
-var selectedDiningHall:String = "";
+var selectedDiningHall:String = ""
 ```
 
 ###Making the cells display data
