@@ -5,6 +5,8 @@ Welcome to hackweek! In this workshop we'll be making a 5C menu app.
 
 ---
 
+#Day 1
+
 We'll walk you through how to make the app step-by-step but this doc has some of the steps written out for reference.
 
 ##Understanding swift
@@ -205,7 +207,29 @@ class MenuViewController: UITableViewController {
 
 Now that we have some data displayed let's see what our app looks like! To run your app on a simulated device press the play button on the upper left corner of the screen. 
 
-Awesome job so far!
+Awesome job so far! 
+
+#Day 2
+
+Now that we have the basic structure of our app we want to grab the menu data. Unlike our list of dining halls, this data changes every day so we need a way to access it. 
+
+Lucky for us ASPC provides an API for us to use. Read more about APIs [here](https://medium.freecodecamp.com/what-is-an-api-in-english-please-b880a3214a82#.yrzgazgvt). Basically they allow us to access data that someone else has provided, or interact with their service. If you wanted to grab tweets to put in your app you could use the [Twitter API](https://dev.twitter.com/overview/api), or if you wanted to get weather information you could use [Yahoo's weather API](https://developer.yahoo.com/weather/). You could even get congressional voting records from [govtrack](https://www.govtrack.us/developers/api). I'm getting carried away but the point is there are tons of APIs out there that can make for interesting projects.
+
+From the [ASPC API Documentation](https://aspc.pomona.edu/api/) we see that the basic request looks like:
+```
+"https://aspc.pomona.edu/api/menu/?auth_token=8227601fb7f5768fb6ccf9f5ab38c4700b884ea0"
+```
+We are making a GET request which means we want to recieve information from the ASPC API but not modify anything. Unfortunately we can't tell Frary what dessert we want it to serve through this API. Bummer.
+
+What if we just wanted to look at cmc's menu for Tuesday? From reading the documentation we see that we can modify our request to include parameters. Can you find the "cmc" and "tue" parameters in my request?
+```
+"https://aspc.pomona.edu/api/menu/dining_hall/cmc/day/tue?auth_token=8227601fb7f5768fb6ccf9f5ab38c4700b884ea0"
+```
+See if you can make a few API calls of your own. Type
+```
+$ curl "https://aspc.pomona.edu/api/menu/dining_hall/cmc/day/fri?auth_token=8227601fb7f5768fb6ccf9f5ab38c4700b884ea0"
+```
+in terminal to see what the response will look like. Try modifiying the parameters to get different responses. The response is returned in [JSON](http://www.w3schools.com/js/js_json_intro.asp) format. 
 
 ##Getting the Menu Data
 
