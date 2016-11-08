@@ -219,7 +219,7 @@ From the [ASPC API Documentation](https://aspc.pomona.edu/api/) we see that the 
 ```
 "https://aspc.pomona.edu/api/menu/?auth_token=8227601fb7f5768fb6ccf9f5ab38c4700b884ea0"
 ```
-We are making a GET request which means we want to recieve information from the ASPC API but not modify anything. Unfortunately we can't tell Frary what dessert we want it to serve through this API. Bummer.
+We are making a GET request which means we want to recieve information from the ASPC API but not modify anything. Unfortunately we can't use this API to tell Frary what dessert we want it to serve. Bummer.
 
 What if we just wanted to look at cmc's menu for Tuesday? From reading the documentation we see that we can modify our request to include parameters. Can you find the "cmc" and "tue" parameters in my request?
 ```
