@@ -233,7 +233,16 @@ in terminal to see what the response will look like. Try modifiying the paramete
 
 ##Getting the Menu Data
 
-Here is how we will use Alamofire to make our API call:
+So now we know how to make an API call with the ASPC menu API. Our Alamofire library will help us make the request in Swift. 
+
+This is my Alamofire request:
+```
+Alamofire.request(.GET, "https://aspc.pomona.edu/api/menu/dining_hall/"+apiDiningHall+"/day/"+apiDay+"?auth_token=8227601fb7f5768fb6ccf9f5ab38c4700b884ea0").responseJSON
+```
+
+We are making a GET request so my first parameter to Alamofire's request method is .GET. Next I constructed my API call by adding my apiDiningHall and apiDay variables into my requst string in the positions for the dininghall and day variables. 
+
+Next I take the response and use SwiftyJSON to help extract the menu items from the JSON.
 
 ```Swift
 //Read in data from the ASPC Menu API
