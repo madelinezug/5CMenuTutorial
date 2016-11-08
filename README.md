@@ -7,6 +7,12 @@ Welcome to hackweek! In this workshop we'll be making a 5C menu app.
 
 We'll walk you through how to make the app step-by-step but this doc has some of the steps written out for reference.
 
+##Understanding swift
+
+Before we get into any coding, let's quickly take a look at the way Swift works. It's a very intuitive language. This is a good reference to get started:
+
+[Codepath iOS Guides](https://guides.codepath.com/ios/Understanding-Swift)
+
 ##Getting Started
 
 Open XCode and create a new Single View application.
