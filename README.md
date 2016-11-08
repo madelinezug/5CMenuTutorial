@@ -213,7 +213,7 @@ Awesome job so far!
 
 Now that we have the basic structure of our app we want to grab the menu data. Unlike our list of dining halls, this data changes every day so we need a way to access it. 
 
-Lucky for us ASPC provides an API for us to use. Read more about APIs [here](https://medium.freecodecamp.com/what-is-an-api-in-english-please-b880a3214a82#.yrzgazgvt). Basically they allow us to access data that someone else has provided, or interact with their service. If you wanted to grab tweets to put in your app you could use the [Twitter API](https://dev.twitter.com/overview/api), or if you wanted to get weather information you could use [Yahoo's weather API](https://developer.yahoo.com/weather/). You could even get congressional voting records from [govtrack](https://www.govtrack.us/developers/api). I'm getting carried away but the point is there are tons of APIs out there that can make for interesting projects.
+Lucky for us ASPC provides an API for us to use. Read more about APIs [here](https://medium.freecodecamp.com/what-is-an-api-in-english-please-b880a3214a82#.yrzgazgvt). Basically they allow us to access data that someone else has provided, or interact with their service. If you wanted to grab tweets to put in your app you could use the [Twitter API](https://dev.twitter.com/overview/api), or if you wanted to get weather information you could use [Yahoo's weather API](https://developer.yahoo.com/weather/). You could even get congressional voting records from [govtrack](https://www.govtrack.us/developers/api). There are tons of APIs out there that can make for interesting projects!
 
 From the [ASPC API Documentation](https://aspc.pomona.edu/api/) we see that the basic request looks like:
 ```
