@@ -31,7 +31,7 @@ We will make the request with help from [Alamofire](https://github.com/Alamofire
 
 ## Installing Cocoapods
 
-Before we continue let's install [cocoapods.] (https://cocoapods.org) This will let us use libraries in our project!
+Before we continue let's install [cocoapods.](https://cocoapods.org) This will let us use libraries in our project!
 
 Open terminal and run:
 
@@ -86,9 +86,9 @@ You need to run this every time you update your podfile.
 
 We'll have to close XCode and be sure to open the .xcworkspace version of our project now that we have pods installed.
 
-##Continuing to build our app!
+## Continuing to build our app!
 
-###Configuring our Storyboard
+### Configuring our Storyboard
 
 Back to our storyboard. We want to use a specific subclass of ViewController called TableViewController so we can display a table of the 7 dining hall options. 
 
@@ -106,9 +106,9 @@ Add a second TableViewController.
 
 Connect the two with a segue from the first TableViewController to the second TableViewController. 
 
-###Adding files & code
+### Adding files & code
 
-More detailed instructions with pictures for a similar app structure are available [here] (https://www.ralfebert.de/tutorials/ios-swift-uitableviewcontroller/)
+More detailed instructions with pictures for a similar app structure are available [here](https://www.ralfebert.de/tutorials/ios-swift-uitableviewcontroller/)
 
 We need a file for each of the TableViewControllers we added to the storyboard. This is where we will further specify how our app should look and behave.
 
